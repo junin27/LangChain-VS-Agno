@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '../../contexts/ThemeContext';
-import { useEditMode } from '../../contexts/EditModeContext';
+
 import { navigationItems } from '../../data/navigation';
 
 const Sidebar: React.FC = () => {
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
-  const { isEditMode, toggleEditMode } = useEditMode();
+
 
   const isActivePath = (path: string) => {
     return location.pathname === path || location.pathname.startsWith(path + '/');
@@ -43,23 +43,7 @@ const Sidebar: React.FC = () => {
             </span>
           </button>
           
-          <button
-            onClick={toggleEditMode}
-            className={`flex items-center justify-start px-4 py-3 text-sm rounded-xl transition-all duration-300 group ${
-              isEditMode 
-                ? 'nav-item-active' 
-                : 'glass-effect hover:scale-105'
-            }`}
-            aria-label={`${isEditMode ? 'Desativar' : 'Ativar'} modo de edição`}
-          >
-            <span className="text-2xl group-hover:scale-125 transition-transform duration-300">✏️</span>
-            <span className={`ml-3 font-medium ${isEditMode ? 'text-white' : 'text-gray-800 dark:text-gray-200'}`}>
-              {isEditMode ? 'Editando' : 'Modo Edição'}
-            </span>
-            {isEditMode && (
-              <div className="ml-auto w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-            )}
-          </button>
+
         </div>
 
         {/* Navigation */}

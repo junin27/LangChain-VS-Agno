@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
-import { EditModeProvider } from './contexts/EditModeContext';
+
 import Layout from './components/layout/Layout';
 
 // Route Components
@@ -53,7 +53,7 @@ import RecommendationsPage from './routes/RecommendationsPage';
 function App() {
   return (
     <ThemeProvider>
-      <EditModeProvider>
+
         <Router>
           <Layout>
             <Routes>
@@ -105,7 +105,7 @@ function App() {
             </Routes>
           </Layout>
         </Router>
-      </EditModeProvider>
+
     </ThemeProvider>
   );
 }
