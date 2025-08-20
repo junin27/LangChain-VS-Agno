@@ -25,7 +25,7 @@ export default defineConfig({
       },
     },
     // Minificação otimizada
-    minify: 'terser',
+    minify: 'esbuild',
     // Otimização de chunks
     chunkSizeWarningLimit: 1000,
   },
