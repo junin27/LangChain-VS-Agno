@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://comparativo-langchain-agno.vercel.app/sitemap.xml
+
+# Comparativo LangChain vs Agno
+# Site de análise técnica comparativa entre bibliotecas de IA
