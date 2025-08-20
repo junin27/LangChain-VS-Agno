@@ -75,10 +75,7 @@ export interface ThemeContextType {
 }
 
 // Admin/Editor types
-export interface EditModeContextType {
-  isEditMode: boolean;
-  toggleEditMode: () => void;
-}
+
 
 // Navigation types
 export interface NavItem {
