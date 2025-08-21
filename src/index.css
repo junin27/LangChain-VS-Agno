@@ -570,3 +570,45 @@
     display: none !important;
   }
 }
+
+/* Garantir que os gráficos Recharts tenham a mesma cor de fundo da classe card */
+.recharts-wrapper,
+.recharts-surface {
+  background: rgba(255, 255, 255, 0.98) !important;
+}
+
+.recharts-wrapper svg,
+.recharts-surface svg {
+  background: rgba(255, 255, 255, 0.98) !important;
+}
+
+.card .recharts-wrapper,
+.card .recharts-surface {
+  background: rgba(255, 255, 255, 0.98) !important;
+}
+
+.card .recharts-wrapper svg,
+.card .recharts-surface svg {
+  background: rgba(255, 255, 255, 0.98) !important;
+}
+
+/* Tema escuro */
+.dark .recharts-wrapper,
+.dark .recharts-surface {
+  background: rgba(15, 23, 42, 0.98) !important;
+}
+
+.dark .recharts-wrapper svg,
+.dark .recharts-surface svg {
+  background: rgba(15, 23, 42, 0.98) !important;
+}
+
+.dark .card .recharts-wrapper,
+.dark .card .recharts-surface {
+  background: rgba(15, 23, 42, 0.98) !important;
+}
+
+.dark .card .recharts-wrapper svg,
+.dark .card .recharts-surface svg {
+  background: rgba(15, 23, 42, 0.98) !important;
+}

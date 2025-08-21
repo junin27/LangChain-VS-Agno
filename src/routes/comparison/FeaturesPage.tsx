@@ -169,10 +169,14 @@ const FeaturesPage: React.FC = () => {
         {/* Charts Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="card-hover">
-            <RadarChartComponent />
+            <div className="card p-6">
+              <RadarChartComponent />
+            </div>
           </div>
           <div className="card-hover">
-            <BarChartComponent />
+            <div className="card p-6">
+              <BarChartComponent />
+            </div>
           </div>
         </div>
 
