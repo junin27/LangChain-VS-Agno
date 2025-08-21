@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer, Legend } from 'recharts';
 import { mockScores } from '../../data/mock/comparison';
 
@@ -7,11 +7,26 @@ interface RadarChartComponentProps {
 }
 
 const RadarChartComponent: React.FC<RadarChartComponentProps> = ({ className = '' }) => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const data = mockScores.map(score => ({
     criterion: score.criterion,
     LangChain: score.langchain,
     Agno: score.agno
   }));
+
+  const getMaxCharsPerLine = () => {
+    if (windowWidth < 640) return 6; // sm
+    if (windowWidth < 768) return 8; // md
+    if (windowWidth < 1024) return 10; // lg
+    return 12; // xl e acima
+  };
 
   return (
     <div className={`card p-6 ${className}`}>
@@ -22,7 +37,46 @@ const RadarChartComponent: React.FC<RadarChartComponentProps> = ({ className = '
             <PolarGrid className="opacity-30" />
             <PolarAngleAxis 
               dataKey="criterion" 
-              tick={{ fontSize: 12, fill: 'currentColor' }}
+              radius={160}
+              tick={{ 
+                fontSize: windowWidth < 640 ? 8 : 10, 
+                fill: 'currentColor',
+                textAnchor: 'middle',
+                dominantBaseline: 'middle'
+              }}
+              tickFormatter={(value) => {
+                const maxChars = getMaxCharsPerLine();
+                
+                // Se a palavra é menor que o limite, retorna como está
+                if (value.length <= maxChars) {
+                  return value;
+                }
+                
+                // Tenta quebrar por espaços primeiro
+                const words = value.split(' ');
+                if (words.length > 1) {
+                  let lines = [];
+                  let currentLine = '';
+                  
+                  for (const word of words) {
+                    if ((currentLine + ' ' + word).length <= maxChars) {
+                      currentLine = currentLine ? currentLine + ' ' + word : word;
+                    } else {
+                      if (currentLine) lines.push(currentLine);
+                      currentLine = word;
+                    }
+                  }
+                  if (currentLine) lines.push(currentLine);
+                  return lines.join('\n');
+                }
+                
+                // Para palavras únicas muito longas, quebra em pedaços
+                const chunks = [];
+                for (let i = 0; i < value.length; i += maxChars) {
+                  chunks.push(value.slice(i, i + maxChars));
+                }
+                return chunks.join('\n');
+              }}
             />
             <PolarRadiusAxis 
               angle={90} 

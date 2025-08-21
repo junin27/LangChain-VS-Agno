@@ -173,10 +173,5 @@ export const navigationItems: NavItem[] = [
     id: 'recommendations',
     title: 'Recomendações',
     path: '/recomendacoes'
-  },
-  {
-    id: 'builder',
-    title: 'Construtor de Comparações',
-    path: '/construtor'
   }
 ];

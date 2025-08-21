@@ -5,7 +5,7 @@ import Layout from './components/layout/Layout';
 
 // Route Components
 import HomePage from './routes/HomePage';
-import ComparisonBuilderPage from './routes/ComparisonBuilderPage';
+
 import AdminPage from './routes/AdminPage';
 
 // LangChain Routes
@@ -58,7 +58,7 @@ function App() {
           <Layout>
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path="/construtor" element={<ComparisonBuilderPage />} />
+
               <Route path="/admin" element={<AdminPage />} />
               
               {/* LangChain Routes */}

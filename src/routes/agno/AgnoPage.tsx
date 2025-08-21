@@ -71,23 +71,23 @@ const AgnoPage: React.FC = () => {
       title="Agno" 
       subtitle="Análise completa da biblioteca Agno para desenvolvimento eficiente de IA"
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {sections.map((section, index) => (
           <Link
             key={index}
             to={section.path}
-            className="group block p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600"
+            className="card-hover p-8 group"
           >
-            <div className="flex items-start space-x-4">
-              <div className="text-2xl">{section.icon}</div>
-              <div className="flex-1">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                  {section.title}
-                </h3>
-                <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
-                  {section.description}
-                </p>
-              </div>
+            <div className="mb-4">
+              <h3 className="text-2xl font-bold gradient-text">
+                {section.title}
+              </h3>
+            </div>
+            <p className="text-gray-800 dark:text-gray-200 leading-relaxed">
+              {section.description}
+            </p>
+            <div className="mt-6 flex items-center text-blue-700 dark:text-blue-300 font-semibold transition-transform duration-300 bg-blue-100 dark:bg-blue-900 px-4 py-2 rounded">
+              EXPLORAR
             </div>
           </Link>
         ))}
