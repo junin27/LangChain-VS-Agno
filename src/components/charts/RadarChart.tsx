@@ -29,9 +29,9 @@ const RadarChartComponent: React.FC<RadarChartComponentProps> = ({ className = '
   };
 
   return (
-    <div className={`card p-6 ${className}`}>
-      <h3 className="text-lg font-semibold mb-4">Comparação por Radar</h3>
-      <div className="h-96">
+    <div className={`${className}`}>
+      <h3 className="text-xl font-bold mb-4 gradient-text">Comparação por Radar</h3>
+      <div className="h-80">
         <ResponsiveContainer width="100%" height="100%">
           <RadarChart data={data}>
             <PolarGrid className="opacity-30" />
@@ -88,22 +88,22 @@ const RadarChartComponent: React.FC<RadarChartComponentProps> = ({ className = '
               dataKey="LangChain"
               stroke="rgb(59 130 246)"
               fill="rgb(59 130 246)"
-              fillOpacity={0.1}
+              fillOpacity={0.2}
               strokeWidth={2}
             />
             <Radar
               name="Agno"
               dataKey="Agno"
-              stroke="rgb(16 185 129)"
-              fill="rgb(16 185 129)"
-              fillOpacity={0.1}
+              stroke="rgb(34 197 94)"
+              fill="rgb(34 197 94)"
+              fillOpacity={0.2}
               strokeWidth={2}
             />
             <Legend />
           </RadarChart>
         </ResponsiveContainer>
       </div>
-      <p className="text-sm text-muted-foreground mt-2">
+      <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
         Escala de 0-10 pontos por critério. Dados fictícios para demonstração.
       </p>
     </div>
