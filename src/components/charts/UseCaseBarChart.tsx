@@ -84,12 +84,27 @@ const UseCaseBarChart: React.FC<UseCaseBarChartProps> = ({ data }) => {
         >
           <CartesianGrid strokeDasharray="3 3" className="stroke-gray-300 dark:stroke-gray-600" />
           <XAxis 
-            dataKey="name" 
-            className="text-xs fill-gray-700 dark:fill-gray-300"
-            tick={{ fontSize: 10 }}
+            dataKey="name"
             angle={-45}
             textAnchor="end"
-            height={80}
+            height={100}
+            interval={0}
+            tick={{ fontSize: 10, fill: 'currentColor' }}
+            tickFormatter={(value) => {
+              // Quebra palavras longas em múltiplas linhas
+              if (value.length > 12) {
+                const words = value.split(' ');
+                if (words.length > 1) {
+                  return words.join(' ');
+                } else {
+                  // Para palavras muito longas, quebra no meio
+                  const mid = Math.ceil(value.length / 2);
+                  return value.slice(0, mid) + '-' + value.slice(mid);
+                }
+              }
+              return value;
+            }} 
+            className="text-xs fill-gray-700 dark:fill-gray-300"
           />
           <YAxis 
             className="text-xs fill-gray-700 dark:fill-gray-300"

@@ -24,9 +24,23 @@ const BarChartComponent: React.FC<BarChartComponentProps> = ({ className = '' })
               dataKey="criterion" 
               angle={-45}
               textAnchor="end"
-              height={80}
+              height={100}
               interval={0}
-              tick={{ fontSize: 12, fill: 'currentColor' }}
+              tick={{ fontSize: 10, fill: 'currentColor' }}
+              tickFormatter={(value) => {
+                // Quebra palavras longas em múltiplas linhas
+                if (value.length > 10) {
+                  const words = value.split(' ');
+                  if (words.length > 1) {
+                    return words.join(' ');
+                  } else {
+                    // Para palavras muito longas, quebra no meio
+                    const mid = Math.ceil(value.length / 2);
+                    return value.slice(0, mid) + '-' + value.slice(mid);
+                  }
+                }
+                return value;
+              }}
             />
             <YAxis 
               domain={[0, 10]}

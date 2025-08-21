@@ -10,7 +10,7 @@ const PageTemplate: React.FC<PageTemplateProps> = ({ title, subtitle, children }
   return (
     <div className="space-y-8">
       <div className="space-y-4">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">{title}</h1>
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white" style={{textShadow: '2px 2px 0px black, 0px 2px 0px black, 2px 0px 0px black'}}>{title}</h1>
         {subtitle && (
           <p className="text-lg text-gray-900 dark:text-white max-w-3xl">
             {subtitle}
